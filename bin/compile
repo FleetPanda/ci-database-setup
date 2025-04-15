@@ -1,0 +1,13 @@
+#!/bin/sh
+BUILD_DIR=$1
+
+echo "Updating config/database.yml with config/database.ci.yml..."
+
+if [ -f "$BUILD_DIR/config/database.ci.yml" ]; then
+  cp "$BUILD_DIR/config/database.ci.yml" "$BUILD_DIR/config/database.yml"
+
+  echo "config/database.yml"
+  cat "$BUILD_DIR/config/database.yml"
+else
+  exit 1
+fi
